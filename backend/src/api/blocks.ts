@@ -373,7 +373,6 @@ class Blocks {
         }
       }
 
-      extras.firstSeen = null;
       if (config.CORE_RPC.DEBUG_LOG_PATH) {
         const oldestLog = this.getOldestCoreLogTimestamp();
         if (oldestLog) {
@@ -956,12 +955,12 @@ class Blocks {
     logger.debug(`Found first seen times of ${foundCount} / ${results.length} blocks in Core logs, saving to database...`);
     await BlocksRepository.$saveFirstSeenTimes(results);
 
-    const blocksByHash = new Map<string, BlockExtended>(this.blocks.map<[string, BlockExtended]>(block => [block.id, block]));
-
     for (const { hash, firstSeen } of results) {
-      const cachedBlock = blocksByHash.get(hash);
-      if (cachedBlock?.extras) {
-        cachedBlock.extras.firstSeen = firstSeen;
+      if (firstSeen !== null) {
+        const cachedBlock = this.blocks.find(blk => blk.id === hash);
+        if (cachedBlock) {
+          cachedBlock.extras.firstSeen = firstSeen;
+        }
       }
     }
 
