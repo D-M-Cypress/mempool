@@ -69,7 +69,7 @@
     "@angular/localize": "^20.3.17",
     "@angular/platform-browser": "^20.3.17",
     "@angular/platform-browser-dynamic": "^20.3.17",
-    "@angular/platform-server": "^20.3.19",
+    "@angular/platform-server": "^20.3.21",
     "@angular/router": "^20.3.17",
     "@angular/ssr": "^20.3.17",
     "@fortawesome/angular-fontawesome": "^3.0.0",
@@ -106,7 +106,7 @@
   },
   "optionalDependencies": {
     "@cypress/schematic": "^2.5.0",
-    "cypress": "^15.12.0",
+    "cypress": "^15.15.0",
     "cypress-fail-on-console-error": "~5.1.1",
     "cypress-wait-until": "^3.0.1",
     "mock-socket": "~9.3.1",
